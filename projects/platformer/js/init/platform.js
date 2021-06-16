@@ -25,6 +25,7 @@
      */ 
     function init(game) {
         let createPlatform = platform.create;
+        
 
         ////////////////////////////////////////////////////////////////////////
         // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
@@ -37,9 +38,11 @@
         createPlatform(0, game.world.height - 32, 3, 2);    // DO NOT DELETE
 
         // example:
-        createPlatform(400, 250);
-        createPlatform(170, 460, 0.5);
-        
+        createPlatform(0, 0, 0.1, 100);
+        createPlatform(500, 0, 0.1, 100);
+        createPlatform(0, 175, 0.5)
+        createPlatform(340, 350, 0.5)
+        createPlatform(0, 525, 0.5)
         // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////
     }
