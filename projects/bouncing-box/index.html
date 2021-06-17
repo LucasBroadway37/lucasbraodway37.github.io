@@ -15,6 +15,7 @@
 			position: absolute;
 			top: 100px;
 			left: 0px;  /* <--- Change me! */
+
 		}
 		.board{
 			height: 100vh;
@@ -50,17 +51,23 @@
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
 			}
+			
+			
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
 			}
+			
 
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
+			var posx=0;
+			var pnts=0;
+			var spd=10
 			
 
 			
@@ -70,18 +77,33 @@
 			turn it around! 
 			*/
 			function update() {
+				posx+=spd;
+				moveBoxTo(posx);
+				if (posx>boardWidth) {
+					spd*=-1
+				};
+				if (posx<0) {
+					spd*=-1
+				}
 				
-
 			};
-
+			
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
 			it should increase the points total, increase the speed, and move the box to
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
+				posx=0;
+				changeBoxText(1);
+				pnts+=1;
+				changeBoxText(pnts);
+				spd+=3;
+				if (spd>0) {
+					spd+=3;
+				} else if (spd<0) {
+					spd-=3;
+				};
 
 			};
 		})();

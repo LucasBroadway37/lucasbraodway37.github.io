@@ -39,7 +39,6 @@ $(document).ready(function () {
         game.physics.arcade.overlap(asset, game.projectile, onProjectileOverlap, null, this);
         
         playerManager.update();
-        endGame();
     }
 
     function onProjectileOverlap() {
@@ -63,10 +62,5 @@ $(document).ready(function () {
         game.score.text = 'Score: ' + (parseInt(/\s+(\S*)$/.exec(game.score.text)[1], 10) + collectable.type.points);
         collectable.kill();
     }
-   function endGame(){
-       if ((parseInt(/\s+(\S*)$/.exec(game.score.text)[1], 10) >= 100)){
-        window.location.href="../platformer2/"; 
-       }
-   }
 
 });
