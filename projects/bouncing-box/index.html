@@ -8,13 +8,14 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(117, 255, 163);
 			font-size: 300%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
 			left: 0px;  /* <--- Change me! */
+
 
 		}
 		.board{
@@ -25,8 +26,11 @@
 
 </head>
 <body class="board">
+	<div>
+		<h1 class="score">pnts</h1>
+	</div>
 	<!-- HTML for the box -->
-	<div class="box">?</div>
+	<div class="box"></div>
 
 	<script>
 		(function(){
@@ -38,6 +42,7 @@
 			//////////////////////////////////////////////////////////////////
 			
 			var box = jQuery('.box');	// reference to the HTML .box element
+			var score=jQuery('.score');
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
@@ -51,12 +56,15 @@
 			function moveBoxTo(newPositionX) {
 				box.css("left", newPositionX);
 			}
+			function moveBoxto(newPositionY) {
+				box.css("top", newPositionY)
+			}
 			
 			
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
-				box.text(newText);
+				score.text(newText);
 			}
 			
 
@@ -67,8 +75,9 @@
 			// TODO 2 - Variable declarations 
 			var posx=0;
 			var pnts=0;
-			var spd=10
-			
+			var xspd=10;
+			var yspd=10;
+			var posy=100;
 
 			
 			/* 
@@ -77,14 +86,17 @@
 			turn it around! 
 			*/
 			function update() {
-				posx+=spd;
+				posx+=xspd;
 				moveBoxTo(posx);
-				if (posx>boardWidth) {
-					spd*=-1
-				};
-				if (posx<0) {
-					spd*=-1
+				posy+=yspd;
+				moveBoxto(posy);
+				if (posx>=1550 || posx<=0) {
+					xspd*=-1;
 				}
+				if (posy>=723 || posy<=0) {
+					yspd*=-1
+				}
+				
 				
 			};
 			
@@ -94,16 +106,18 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				posx=0;
+				posx=1;
 				changeBoxText(1);
 				pnts+=1;
 				changeBoxText(pnts);
-				spd+=3;
-				if (spd>0) {
-					spd+=3;
-				} else if (spd<0) {
-					spd-=3;
-				};
+
+				xspd+=3;
+				posy=100
+				var randomNumberBetween0and10 = Math.random() * 10;
+				var colorStr = "rgb("+ Math.random()*255+", 25, 250)";
+				box.css('background-color', colorStr);
+				
+				
 
 			};
 		})();

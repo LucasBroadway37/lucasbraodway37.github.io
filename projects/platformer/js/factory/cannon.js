@@ -43,7 +43,10 @@
                 if (position < 0 || position > game.world.height) {
                     throw new Error(`You are trying to place a cannon off the stage at ${position}, this is not allowed!`);
                 }
-            }
+            } else if (type === "rtngcnn") {}
+                
+                    
+                
             
             let tweenTo = {}, cannon, projectile, tween, x, y, angle;
             
@@ -63,7 +66,12 @@
                 x = game.world.width - 42, y = position;
                 angle = -90;
                 tweenTo.x = 0
-            } else {
+            } else if (type === "rtngcnn") {
+                x = 500, y = position;
+                angle = -90;
+                tweenTo.x = 0
+            }
+            else {
                 throw new Error(`${type} is not a valid cannon type`);
             }
 

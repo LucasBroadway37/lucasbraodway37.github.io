@@ -27,9 +27,9 @@
         // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
         
         // example: 
-        createCannon("top", 100);
+        createCannon("top", 150);
         createCannon("bottom", 400);
-        createCannon("right", 100)
+        createCannon("rtngcnn", 270);
         
         
         
